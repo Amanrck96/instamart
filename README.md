@@ -1,3 +1,4 @@
+ HEAD
 # Instamart
 
 Instamart is a modern online grocery delivery platform built with React and Firebase. It provides users with a seamless shopping experience, real-time order tracking, and secure authentication — all optimized for speed and simplicity.
@@ -170,3 +171,7 @@ src/
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+# instamart
+A web project for Instamart – an online grocery delivery platform with fast, reliable service and real-time updates
+ 06eadfe82b196877c7158cc5a70b7fe90703e731
