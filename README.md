@@ -1,105 +1,172 @@
 # Instamart
 
-A web project for Instamart – an online grocery delivery platform with fast, reliable service and real-time updates.
+Instamart is a modern online grocery delivery platform built with React and Firebase. It provides users with a seamless shopping experience, real-time order tracking, and secure authentication — all optimized for speed and simplicity.
 
-## Tech Stack
+## 🌐 Live Demo
 
-This project is built with React + Vite, providing a minimal setup with Hot Module Replacement (HMR) and ESLint rules.
+Coming soon...
 
-### Core Technologies
-- React 18 with Vite for fast development and optimized builds
-- Firebase for backend services and real-time updates
-- Material-UI for responsive and modern UI components
-- Redux for state management
+## 📚 Table of Contents
 
-### Features
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Available Scripts](#available-scripts)
+- [Deployment](#deployment)
+- [Security](#security)
+- [Contributing](#contributing)
+- [License](#license)
 
-- **Fast Refresh** using [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react)
-- **Real-time Order Tracking**
-  - Live status updates for orders
-  - Push notifications for order status changes
-  - Delivery agent location tracking
-- **User Authentication**
-  - Secure Firebase authentication
-  - Multiple sign-in methods
-  - Protected routes for authenticated users
+## 🚀 Features
+
+### 👤 User Features
+
+- **Authentication**
+  - Email/password login & registration
+  - Google Sign-In
+  - Protected routes (authenticated users only)
+  - Admin access restrictions
+
+- **Shopping Experience**
+  - Browse products by category
+  - Real-time product inventory updates
+  - View detailed product information
+  - Categories: Vegetables, Fruits, Dairy, Bakery, Beverages, Snacks, Household
+
+### 🛒 Order System
+
+- **Shopping Cart**
+  - Add/remove items
+  - Update item quantities
+  - Instant price recalculations
+
 - **Order Management**
-  - Intuitive shopping cart
-  - Order history and reordering
-  - Real-time inventory updates
+  - Real-time order placement and tracking
+  - Order history view
+  - Push notifications for status changes
 
-## Project Structure
+### 🛠️ Admin Dashboard
+
+- **Product Management**
+  - Add/edit/delete products with images
+  - Manage prices and stock
+  - Organize products by category
+
+- **Order Processing**
+  - Real-time order alerts
+  - Update order statuses
+  - Monitor order flow and traffic
+
+## 🧱 Tech Stack
+
+### Frontend
+
+- React 18 (with Vite)
+- Material-UI (MUI)
+- Redux Toolkit
+
+### Backend (Firebase)
+
+- Firebase Authentication
+- Firestore Database
+- Firebase Storage
+- Firebase Analytics
+- Real-time Listeners
+
+## 🗂 Project Structure
 
 ```
 src/
-  ├── components/     # React components
+  ├── components/
+  │   ├── admin/      # Admin dashboard components
   │   ├── auth/       # Authentication components
-  │   ├── common/     # Shared components
-  │   ├── orders/     # Order-related components
-  │   └── pages/      # Page components
-  ├── firebase/       # Firebase configuration and services
-  ├── store/          # Redux store setup and slices
-  └── assets/         # Static assets
+  │   ├── common/     # Shared UI components
+  │   ├── orders/     # Order management
+  │   └── pages/      # Main page components
+  ├── firebase/       # Firebase services
+  ├── store/          # Redux store configuration
+  └── assets/         # Static resources
 ```
 
-## Getting Started
+## ⚙️ Getting Started
 
 ### Prerequisites
-- Node.js 16.x or higher
-- npm 7.x or higher
+
+- Node.js 16+ 
+- npm 7+
+- Firebase account
 
 ### Installation
 
-1. Clone the repository
-2. Install dependencies:
-```bash
-npm install
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/amanrck96/instamart.git
+   cd instamart
+   ```
 
-3. Set up Firebase configuration:
-   - Create a Firebase project
-   - Copy your Firebase config to `src/firebase/config.js`
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-4. Start the development server:
-```bash
-npm run dev
-```
+3. **Firebase Setup:**
+   - Create a Firebase project at [Firebase Console](https://console.firebase.google.com)
+   - Enable Authentication (Email/Password and Google Sign-In)
+   - Set up Firestore Database
+   - Configure Firebase Storage
+   - Go to Project Settings > General > Add Web App
+   - Copy the Firebase configuration and update `src/firebase/config.js`
 
-## Development
+4. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
 
-The project includes several npm scripts for development:
+## 📜 Available Scripts
 
-```bash
-npm run dev      # Start development server
-npm run build    # Build for production
-npm run preview  # Preview production build
-npm run lint     # Run ESLint
-```
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+- `npm test` - Run tests
 
-## ESLint Configuration
+## 🚀 Deployment
 
-The project includes ESLint for code quality. For production applications, we recommend enabling type-aware lint rules with TypeScript. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for TypeScript integration.
+1. **Build the project:**
+   ```bash
+   npm run build
+   ```
 
-## Deployment
+2. **Preview the build:**
+   ```bash
+   npm run preview
+   ```
 
-1. Build the project:
-```bash
-npm run build
-```
+3. **Deploy to Firebase:**
+   ```bash
+   npm install -g firebase-tools
+   firebase login
+   firebase init
+   firebase deploy
+   ```
 
-2. Deploy to Firebase Hosting:
-```bash
-firebase deploy
-```
+## 🔒 Security
 
-## Contributing
+- Protected admin routes
+- Secure Firebase configuration
+- Real-time data validation
+- Protected API endpoints
+- Regular security audits
+
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a pull request
 
-## License
+## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

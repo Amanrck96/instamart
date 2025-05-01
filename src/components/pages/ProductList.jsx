@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Container,
   Grid,
@@ -11,51 +11,58 @@ import {
   Rating,
   Box,
   Snackbar,
-  Alert
+  Alert,
+  CircularProgress
 } from '@mui/material';
 import { AddShoppingCart } from '@mui/icons-material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '../../store/slices/cartSlice';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../firebase/config';
+import { setProducts, setLoading, setError } from '../../store/slices/productSlice';
 
 const ProductList = () => {
   const dispatch = useDispatch();
-  const [openSnackbar, setOpenSnackbar] = React.useState(false);
-  const [snackbarMessage, setSnackbarMessage] = React.useState('');
-  // Mock products data - replace with actual data from your backend
-  const products = [
-    {
-      id: 1,
-      name: 'Fresh Vegetables Bundle',
-      price: 24.99,
-      rating: 4.5,
-      image: 'https://source.unsplash.com/400x300/?vegetables',
-      description: 'A fresh selection of seasonal vegetables.'
-    },
-    {
-      id: 2,
-      name: 'Organic Fruits Pack',
-      price: 29.99,
-      rating: 4.8,
-      image: 'https://source.unsplash.com/400x300/?fruits',
-      description: 'Handpicked organic fruits from local farms.'
-    },
-    {
-      id: 3,
-      name: 'Daily Essentials Kit',
-      price: 34.99,
-      rating: 4.3,
-      image: 'https://source.unsplash.com/400x300/?groceries',
-      description: 'Essential household items for daily needs.'
-    },
-    {
-      id: 4,
-      name: 'Breakfast Bundle',
-      price: 19.99,
-      rating: 4.6,
-      image: 'https://source.unsplash.com/400x300/?breakfast',
-      description: 'Complete breakfast essentials package.'
-    }
-  ];
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const { products, isLoading, error } = useSelector((state) => state.products);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      dispatch(setLoading(true));
+      try {
+        const querySnapshot = await getDocs(collection(db, 'products'));
+        const productsData = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        dispatch(setProducts(productsData));
+      } catch (error) {
+        dispatch(setError(error.message));
+      }
+    };
+
+    fetchProducts();
+  }, [dispatch]);
+
+  if (isLoading) {
+    return (
+      <Container sx={{ py: 8, display: 'flex', justifyContent: 'center' }}>
+        <CircularProgress />
+      </Container>
+    );
+  }
+
+  if (error) {
+    return (
+      <Container sx={{ py: 8 }}>
+        <Alert severity="error">{error}</Alert>
+      </Container>
+    );
+  }
+
+  // Removed mock data as we're now using real data from Firebase
+
 
   return (
     <Container sx={{ py: 8 }} maxWidth="lg">
